@@ -11,7 +11,7 @@ data = read.csv(file = "./DatosControl.csv", sep = ";")
 # Temporalmente cambia el tipo de datos para VTR e Inasistencias
 dataT = data
 dataT[, 3] <- as.factor(data[, 3])
-dataT[, 6] <- as.factor(data[, 6])
+dataT[, 7] <- as.factor(data[, 7])
 
 writeLines("\n\n")
 writeLines('a) Realice una tabla resumiendo a grandes razgos el dataset.\n')
@@ -23,4 +23,31 @@ summary(data[, 3])
 
 writeLines("\n\n")
 writeLines('c) Encuentre la cantidad de personas que reprobaron los ramos con nota <55 y la frecuencia relativa asociada.\n')
-summary(data[, 8])
+table(data[,8])[1]
+writeLines("")
+sum(data[,8]=="<55")/length(data[,8])
+
+writeLines("\n\n")
+writeLines("d) Construya un nuevo dataset que incluya solo a aquellos alumnos que reprobaron los ramos con nota <55")
+dataT <- subset(data, Nota.Final == "<55")
+writeLines("  i) ¿Cuantas personas dicen haber mantenido un estado de salud ’Bueno’ o ’Muy Bueno’ y cuantas un estado de salud ’Malo’ o ’Muy Malo’?")
+sum(dataT[,6] == "Buena" | dataT[,6] == "Muy Buena")
+sum(dataT[,6] == "Suficiente" | dataT[,6] == "Muy Mala")
+
+writeLines("  ii) ¿Cuantas personas dicen haber estudiado 2-5 Hr semanalmente?")
+sum(dataT[,2] == "2-5 hr")
+
+writeLines("  iii) ¿Cuantas personas tuvieron una cantidad de inasistencias menor a 5, un estado de salud ’Bueno’ o ’Muy Bueno’ y dedicaron al estudio de su asignatura a lo menos 5-10 Hr?")
+sum(dataT[,7] < 5 & ( dataT[,6] == "Muy Buena" | dataT[,6] == "Muy Buena" ) & dataT[,2] == "2-5 hr" )
+writeLines("\n\n")
+writeLines("e) Construya una tabla de resumen de la variable VTR")
+c(summary(data[,3]), "Std.Dev."=sd(data[,3]), "Var"=var(data[,3]))
+
+writeLines("\n\n")
+writeLines("f) Obtenga sub-muestras de tamaño n = 200, 500 y 700 para la variable Inasistencias, encuentre la media de cada sub-muestra.")
+subData1 = sample(data[,7], size = 200)
+subData2 = sample(data[,7], size = 500)
+subData3 = sample(data[,7], size = 700)
+mean(subData1)
+mean(subData2)
+mean(subData3)
