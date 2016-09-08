@@ -19,7 +19,7 @@ summary(dataT)
 
 writeLines("\n\n")
 writeLines('b) Encuentre el máximo y mı́nimo para la variable VTR.\n')
-summary(data[, 3])
+summary(data[, 3])[c(1,6)]
 
 writeLines("\n\n")
 writeLines('c) Encuentre la cantidad de personas que reprobaron los ramos con nota <55 y la frecuencia relativa asociada.\n')
@@ -41,7 +41,7 @@ writeLines("  iii) ¿Cuantas personas tuvieron una cantidad de inasistencias men
 sum(dataT[,7] < 5 & ( dataT[,6] == "Muy Buena" | dataT[,6] == "Muy Buena" ) & dataT[,2] == "2-5 hr" )
 writeLines("\n\n")
 writeLines("e) Construya una tabla de resumen de la variable VTR")
-c(summary(data[,3]), "Std.Dev."=sd(data[,3]), "Var"=var(data[,3]))
+c(summary(data[,3])[c(3,4,5,6)], "Std.Dev."=sd(data[,3]), "Var"=var(data[,3]))
 
 writeLines("\n\n")
 writeLines("f) Obtenga sub-muestras de tamaño n = 200, 500 y 700 para la variable Inasistencias, encuentre la media de cada sub-muestra.")
