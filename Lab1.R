@@ -26,7 +26,7 @@ xtable(summary(dataT[,c(5,6,7,8)]))
 
 writeLines("\n")
 writeLines('b) Encuentre el máximo y mı́nimo para la variable VTR.')
-summary(data[, 3])
+summary(data[, 3])[c(1,6)]
 
 writeLines("\n")
 writeLines('c) Encuentre la cantidad de personas que reprobaron los ramos con nota <55 y la frecuencia relativa asociada.')
@@ -48,8 +48,8 @@ sum(dataT[,7] < 5 & ( dataT[,6] == "Muy Buena" | dataT[,6] == "Muy Buena" ) & da
 
 writeLines("\n")
 writeLines("e) Construya una tabla de resumen de la variable VTR")
-c(summary(data[,3]), "Std.Dev."=sd(data[,3]), "Var"=var(data[,3]))
-xtable(data.frame(x=c(summary(data[,3]), "Std.Dev."=sd(data[,3]), "Var"=var(data[,3]))))
+c(summary(data[,3])[c(3,4,5,6)], "Std.Dev."=sd(data[,3]), "Var"=var(data[,3]))
+xtable(data.frame(x=c(summary(data[,3][c(3,4,5,6)), "Std.Dev."=sd(data[,3]), "Var"=var(data[,3]))))
 
 writeLines("\n")
 writeLines("f) Obtenga sub-muestras de tamaño n = 200, 500 y 700 para la variable Inasistencias, encuentre la media de cada sub-muestra.")
