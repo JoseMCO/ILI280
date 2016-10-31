@@ -1,5 +1,5 @@
-# source('http://www.openintro.org/stat/data/cdc.R')
-source('cdc.R')
+source('http://www.openintro.org/stat/data/cdc.R')
+# source('cdc.R') 
 
 ## I) Estimación Puntual ##############################################
 # 1 ###################################################################
@@ -86,3 +86,12 @@ workers.300s.biases <- apply(workers.300s, 2, bias)
 workers.s100000 <- sample(workers, 100000)
 workers.s100000.mean <- mean(workers.s100000)
 
+# 2 ###################################################################
+workers.s100000.zvalue01 <- qnorm( 1 - 0.1/2)
+workers.s100000.zvalue005 <- qnorm( 1 - 0.05/2)
+workers.s100000.zvalue001 <- qnorm( 1 - 0.01/2)
+
+# 3 ###################################################################
+workers.s100000.conf90 <- t.test(workers.s100000, conf.level = 0.90)
+workers.s100000.conf95 <- t.test(workers.s100000, conf.level = 0.95)
+workers.s100000.conf99 <- t.test(workers.s100000, conf.level = 0.99)
