@@ -21,16 +21,17 @@ summary(data)
 samples <- resample(data, 1000)
 summary(samples)
 
-writeLines('\nMedia y Mediana')
-mean(data)
-mean(samples)
-median(data)
-median(samples)
+writeLines('\nMedias')
+c(mean(data), mean(samples))
+writeLines('\nMedianas')
+c(median(data), median(samples))
 
 ## 2) Invervalos de confianza Bootstrap ###############################
 # a,b #################################################################
 load("CommuteAtlanta.rda")
 tSamples <- resample(CommuteAtlanta$Time, 1000)
+writeLines('\nBootstrap para el tiempo')
+summary(tSamples)
 writeLines('\nIntervalos de Confianza')
 interval(tSamples, 0.90)
 interval(tSamples, 0.95)
